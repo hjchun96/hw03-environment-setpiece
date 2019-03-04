@@ -12,13 +12,6 @@ float sdRoundBox( vec3 p, vec3 b, float r )
 
 float raymarch(vec3 eye, vec3 raymarchDir, float start, float end) {// eye = ray orientation
 
-	/*//BVH Optimziation
-	Cube objectCube = createBikeCube();
-	Cube floorCube = createBlockCube();
-	bool hitCube = rayCubeIntersect(eye, raymarchDir, objectCube);
-	bool hitPlane = rayCubeIntersect(eye, raymarchDir, floorCube);
-	if (!hitPlane && ! hitCube) return end;*/
-
 	float depth = start;
 	for (int i = 0; i < MAX_MARCHING_STEPS; i++) {
 		vec3 pnt = eye + depth * raymarchDir;
@@ -90,7 +83,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     // Time varying pixel color
     //vec3 col = 0.5 + 0.5*cos(iTime+uv.xyx+vec3(0,2,4));
 
-    vec3 col = vec3(255.0/255.0, 218.0/255.0, 26.0/255.0);
+    vec3 background_col = vec3(255.0/255.0, 218.0/255.0, 26.0/255.0);
     // Output to screen
     fragColor = vec4(col,1.0);
 
